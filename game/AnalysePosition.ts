@@ -1,7 +1,7 @@
 import { Piece } from "./Piece";
 import { valueOfPiece, isUnderCheck } from "./pieceLogic";
 
-const CAPTURE_MULTIPLIER = 10;
+const CAPTURE_MULTIPLIER = 5;
 
 export const PawnScore = (i: number, j: number, Board: (Piece | any)[][]) => {
   const turn = Board[i][j].color;

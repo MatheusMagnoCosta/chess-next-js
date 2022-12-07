@@ -1,8 +1,8 @@
-import React, { useState } from "react";
+import React, {useState} from "react";
 import Square from "../components/Square";
-import { initialBoard, initiallyCanMoveTo } from "../game/InitialPosition";
-import { Piece } from "../game/Piece";
-import { pieceStateUpdate } from "../game/pieceLogic";
+import {initialBoard, initiallyCanMoveTo} from "../game/InitialPosition";
+import {Piece} from "../game/Piece";
+import {pieceStateUpdate} from "../game/pieceLogic";
 import MinMax from "../game/MinMax";
 
 pieceStateUpdate(initialBoard, "W");
@@ -137,37 +137,94 @@ const Board: React.FC = () => {
     }
   };
 
-
-  console.log(iteraction)
-
+  let rowBoard = 8
   return (
-    <div>
-      <button onClick={()=>{setIsinverted(!isInverted)}}>
-        Inverter
-      </button>
-      <span>
+      <div>
+        <button onClick={() => {
+          setIsinverted(!isInverted)
+        }}>
+          Inverter
+        </button>
+        <span>
         ||
       </span>
-      <input onChange={(e)=> setIteraction(parseInt(e.target.value))} type="range" min="3" max="6" defaultValue="3" className="slider"/>
-      <section className={!isInverted ? "app_board" : "app_board_inverted"} style={{ margin: "auto" }}>
-        {board.map((rows: Piece[][] | any, i: number) => (
-          <span className="row" key={i}>
-            {rows.map((col: Piece[], k: number) => (
-              <Square
-                clickNothing={clickNothing}
-                k={k}
-                i={i}
-                key={`${i}_${k}`}
-                piece={board[i][k]}
-                handleClick={handleClick}
-                active={canMoveToHighlighted[i][k]}
-                isInverted={isInverted}
-              />
-            ))}
+        <input onChange={(e) => setIteraction(parseInt(e.target.value))} type="range" min="3" max="6" defaultValue="3"
+               className="slider"/>
+        <div className="table_l">
+          <div className="table_letter">
+            A
+          </div>
+          <div className="table_letter">
+            B
+          </div>
+          <div className="table_letter">
+            C
+          </div>
+          <div className="table_letter">
+            D
+          </div>
+          <div className="table_letter">
+            E
+          </div>
+          <div className="table_letter">
+            F
+          </div>
+          <div className="table_letter">
+            G
+          </div>
+          <div className="table_letter">
+            H
+          </div>
+        </div>
+
+        <section className={!isInverted ? "app_board" : "app_board_inverted"} style={{margin: "auto"}}>
+          {board.map((rows: Piece[][] | any, i: number) => (
+              <span className="row" key={i}>
+                <span className="table_number">
+                  {rowBoard-i}
+                </span>
+                {rows.map((col: Piece[], k: number) => (
+                    <Square
+                        clickNothing={clickNothing}
+                        k={k}
+                        i={i}
+                        key={`${i}_${k}`}
+                        piece={board[i][k]}
+                        handleClick={handleClick}
+                        active={canMoveToHighlighted[i][k]}
+                        isInverted={isInverted}
+                    />
+                ))}
           </span>
-        ))}
-      </section>
-    </div>
+          ))}
+        </section>
+        <div className="table_l">
+          <div className="table_letter">
+            A
+          </div>
+          <div className="table_letter">
+            B
+          </div>
+          <div className="table_letter">
+            C
+          </div>
+          <div className="table_letter">
+            D
+          </div>
+          <div className="table_letter">
+            E
+          </div>
+          <div className="table_letter">
+            F
+          </div>
+          <div className="table_letter">
+            G
+          </div>
+          <div className="table_letter">
+            H
+          </div>
+        </div>
+      </div>
   );
 };
 

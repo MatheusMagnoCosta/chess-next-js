@@ -8,6 +8,7 @@ import {
   KnightScore,
 } from "./AnalysePosition";
 
+
 export class fromTo {
   constructor(
     i: 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | number,
@@ -47,7 +48,11 @@ const MinMax = (
   };
 
   let newBoard = JSON.parse(JSON.stringify(board));
+  localStorage.setItem("state", JSON.stringify(newBoard));
+  // let newBoard= eval(localStorage.getItem("state")!)
+
   pieceStateUpdate(newBoard, turn);
+  console.log(newBoard)
 
   for (let i = 0; i < 8; i++) {
     for (let j = 0; j < 8; j++) {
@@ -58,7 +63,7 @@ const MinMax = (
           let piece = newBoard[i][j];
           if (piece.canMoveTo[x][y]) {
             count++;
-            console.log(i, j, x, y, board[i][j].canMoveTo);
+            // console.log(i, j, x, y, board[i][j].canMoveTo);
             let copyOfNewBoard = newBoard.map((inner: any) => inner.slice());
             copyOfNewBoard[x][y] = copyOfNewBoard[i][j];
             copyOfNewBoard[i][j] = null;
@@ -73,7 +78,7 @@ const MinMax = (
             let thisMove = new fromTo(i, j, x, y);
 
             scoresAndMoves[scoreToSend] = thisMove;
-            console.log(scoresAndMoves)
+            // console.log(scoresAndMoves)
 
             if (
               turn === "W"

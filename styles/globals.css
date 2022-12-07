@@ -3,7 +3,7 @@
 }
 
 .app_board {
-  width: 800px;
+  width: 820px;
   display: grid;
   grid-template-rows: repeat(8, 100px);
   border: 1px solid black;
@@ -11,7 +11,7 @@
 
 .app_board_inverted{
   transform: rotate(180deg);
-  width: 800px;
+  width: 820px;
   display: grid;
   grid-template-rows: repeat(8, 100px);
   border: 1px solid black;
@@ -39,4 +39,25 @@
 }
 .row:nth-child(2n) .box:nth-child(2n + 1) {
   background-color: rgb(208, 139, 76);
+}
+.table_l{
+  padding-left: 20px;
+  display: flex;
+  max-height: 20px;
+  margin: auto;
+  width: 800px;
+}
+
+.table_letter{
+  width: 100px;
+  background-color: rgb(254, 206, 161);
+  font-weight: bold;
+  text-align: center;
+}
+
+.table_number{
+  width: 20px;
+  background-color: rgb(254, 206, 161);
+  font-weight: bold;
+  text-align: center;
 }
